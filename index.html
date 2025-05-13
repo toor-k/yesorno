@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plushie Peace Pact 🌿🧸</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a2f1a 0%, #0d1a0d 100%);
+            font-family: 'Courier New', 'Apple Chancery', cursive;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #e8f1e1;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(233, 240, 214, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(46, 139, 87, 0.2);
+            border: 2px solid #3a5a40;
+            backdrop-filter: blur(5px);
+            position: relative;
+            background-image: 
+                radial-gradient(circle at center, rgba(154, 205, 50, 0.1) 0%, transparent 70%),
+                linear-gradient(to bottom right, transparent 0%, rgba(60, 179, 113, 0.05) 100%);
+        }
+
+        h1 {
+            color: #d4af37;
+            font-size: 2.8em;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            font-family: 'Brush Script MT', cursive;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #9acd32, transparent);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        button {
+            padding: 18px 40px;
+            font-size: 1.4em;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background: linear-gradient(145deg, #9acd32 0%, #6b8e23 100%);
+            color: #1a2f1a;
+            box-shadow: 0 4px 15px rgba(154, 205, 50, 0.3);
+        }
+
+        #yesBtn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(154, 205, 50, 0.5);
+        }
+
+        #noBtn {
+            background: linear-gradient(145deg, #8b0000 0%, #a52a2a 100%);
+            color: #ffe4e1;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .please-message {
+            position: fixed;
+            color: #ffe4b5;
+            font-size: 1.8em;
+            animation: float 2s ease-out forwards;
+            pointer-events: none;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        @keyframes float {
+            0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
+        }
+
+        #message {
+            display: none;
+            margin-top: 3rem;
+            font-size: 2em;
+            color: #9acd32;
+            text-shadow: 0 0 10px rgba(154, 205, 50, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .nature-bg {
+            position: absolute;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .leaf {
+            width: 40px;
+            height: 40px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="%233a5a40" xmlns="http://www.w3.org/2000/svg"><path d="M17 8C8 10 5.9 16.8 2 22c4-3 8-6 12-8-4 3-8 6-12 8 3.5-4.8 6-10.2 8-16 2 5.8 4.5 11.2 8 16-4-2-8-5-12-8 3.1-2.7 6.5-5 10-7z"/></svg>');
+            animation: float 6s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 5px #9acd32); }
+            50% { filter: drop-shadow(0 0 15px #9acd32); }
+        }
+
+        .stars {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #ffe4b5;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+
+        .knit-texture {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 25px,
+                    rgba(58, 90, 64, 0.1) 25px,
+                    rgba(58, 90, 64, 0.1) 50px
+                );
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="knit-texture"></div>
+    <div class="container">
+        <h1>Can I Challenge Your Plushie Army? 🍂⚔️</h1>
+        <div class="buttons">
+            <button id="yesBtn">Yes, My Queen</button>
+            <button id="noBtn">Never!</button>
+        </div>
+        <div id="message">Truce declared! Let's cuddle instead ❤️</div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const message = document.getElementById('message');
+        let pleaseCount = 0;
+
+        // Create background elements
+        function createNatureBg() {
+            for (let i = 0; i < 20; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'nature-bg leaf';
+                leaf.style.left = `${Math.random() * 100}%`;
+                leaf.style.animationDelay = `${Math.random() * 5}s`;
+                document.body.appendChild(leaf);
+            }
+            
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'stars';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                document.body.appendChild(star);
+            }
+        }
+
+        noBtn.addEventListener('mouseover', () => {
+            pleaseCount++;
+            createPleaseMessage('🍂 Please...');
+            moveButton();
+            createRustleEffect();
+        });
+
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            createPleaseMessage('🧸 No fighting!');
+            moveButton();
+            createRustleEffect();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            document.querySelector('.buttons').style.display = 'none';
+            message.style.display = 'block';
+            createFireflies();
+            playSound('chime');
+        });
+
+        function moveButton() {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            
+            noBtn.style.transform = `translate(${newX - maxX/2}px, ${newY - maxY/2}px)`;
+        }
+
+        function createPleaseMessage(text) {
+            const please = document.createElement('div');
+            please.className = 'please-message';
+            please.textContent = text;
+            please.style.left = `${Math.random() * 80 + 10}%`;
+            please.style.top = `${Math.random() * 80 + 10}%`;
+            
+            document.body.appendChild(please);
+            setTimeout(() => please.remove(), 2000);
+        }
+
+        function createFireflies() {
+            for (let i = 0; i < 30; i++) {
+                const firefly = document.createElement('div');
+                firefly.className = 'firefly';
+                firefly.style.left = `${Math.random() * 100}%`;
+                firefly.style.top = `${Math.random() * 100}%`;
+                firefly.style.animation = `float ${3 + Math.random() * 3}s infinite`;
+                document.body.appendChild(firefly);
+            }
+        }
+
+        function createRustleEffect() {
+            for (let i = 0; i < 5; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'leaf';
+                leaf.style.left = `${Math.random() * 100}%`;
+                leaf.style.top = `${Math.random() * 100}%`;
+                document.body.appendChild(leaf);
+                setTimeout(() => leaf.remove(), 6000);
+            }
+        }
+
+        function playSound(type) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            if (type === 'chime') {
+                oscillator.frequency.setValueAtTime(784, audioContext.currentTime); // G5
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            }
+            
+            oscillator.start();
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            oscillator.stop(audioContext.currentTime + 1);
+        }
+
+        createNatureBg();
+    </script>
+</body>
+</html>
